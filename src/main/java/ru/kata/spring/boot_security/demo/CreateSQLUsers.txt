@@ -1,0 +1,10 @@
+INSERT INTO ROLES (NAME)
+VALUE
+('ROLE_USER'), ('ROLE_ADMIN');
+
+INSERT INTO USERS (AGE, EMAIL, NAME, PASSWORD, SURNAME, USERNAME)
+VALUES
+('27', 'admin@mail.ru', 'adminName', '$2a$12$x2jGJqzzWh7mp1c4bNW/MePnpkb5Q.garsy0PN9cmK3Ja0UQ3N432', 'adminSurname', 'admin'),
+('26', 'user@mail.ru', 'userName', '$2a$12$AyaqSH0/6oYd6yBC2sKfgutia.m2Cz//roNJ0scMTDYmBEba8.87q', 'userSurname', 'user');
+
+INSERT INTO USERS_ROLES (user_id, role_id) values (1,2), (2,1);

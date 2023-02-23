@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+
+<table style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+    <thead>
+    <tr>
+        <th style="width:150px; padding: 12px">Логин</th>
+        <th style="width:150px; padding: 12px">E-mail</th>
+        <th style="width:150px; padding: 12px">Имя</th>
+        <th style="width:150px; padding: 12px">Фамилия</th>
+        <th style="width:150px; padding: 12px">Возраст</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="user : ${user}">
+        <td th:text="${user.getUsername()}" style="width:150px; padding: 12px; text-align: center"></td>
+        <td th:text="${user.getEmail()}" style="width:150px; padding: 12px; text-align: center"></td>
+        <td th:text="${user.getName()}" style="width:150px; padding: 12px; text-align: center"></td>
+        <td th:text="${user.getSurname()}" style="width:150px; padding: 12px; text-align: center"></td>
+        <td th:text="${user.getAge()}" style="width:150px; padding: 12px; text-align: center"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<hr/>
+
+<form style="display: flex; justify-content: center; align-items: center" th:method="GET" th:action="@{/logout}">
+    <input style="color: white; background: #e36d18; border: 1px solid lightgray; border-radius: 5px; padding: 10px 17px; cursor: pointer" type="submit" value="Выйти">
+</form>
+
+</body>
+</html>
