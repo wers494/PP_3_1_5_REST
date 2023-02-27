@@ -23,8 +23,8 @@ public class SetupUsers {
         this.roleService = roleService;
     }
 
-    private Role roleAdmin  = new Role("ROLE_ADMIN");
-    private Role roleUser  = new Role("ROLE_USER");
+    private Role roleAdmin = new Role("ROLE_ADMIN");
+    private Role roleUser = new Role("ROLE_USER");
 
     public List<Role> setAdminRole() {
         List<Role> adminRole = new ArrayList<>();

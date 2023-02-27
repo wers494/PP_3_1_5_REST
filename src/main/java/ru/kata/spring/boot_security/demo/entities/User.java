@@ -5,7 +5,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -27,24 +29,16 @@ public class User implements UserDetails {
 
     private int age;
 
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
-
     @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> roles;
+    private List<Role> roles = new ArrayList<>();
 
     public User() {
     }
 
-    public User(String username, String password, String email, String name, String surname, int age, Collection<Role> roles) {
+    public User(String username, String password, String email, String name, String surname, int age, List<Role> roles) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -54,9 +48,20 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -85,6 +90,10 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
+    }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 
     public String getPassword() {
