@@ -12,20 +12,19 @@ import java.util.Collection;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private Long id;
 
-    @Column(name = "username", unique = true )
+    @Column(unique = true )
     private String username;
-    @Column(name = "password")
+
     private String password;
-    @Column(name = "email")
+
     private String email;
-    @Column(name = "name")
+
     private String name;
-    @Column(name = "surname")
+
     private String surname;
-    @Column(name = "age")
+
     private int age;
 
     public Collection<Role> getRoles() {
