@@ -1,6 +1,5 @@
 package ru.kata.spring.boot_security.demo.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -63,19 +62,11 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByUsername(username);
     }
 
-    @Transactional
     @Override
-    public void createNewUser(User user, List<Role> roles) {
-        user.setRoles(roles);
+    @Transactional
+    public void createNewUser(User user) {
         user.setPassword(passwordEncoder().encode(user.getPassword()));
         save(user);
-    }
-
-    @Transactional
-    @Override
-    public void editUser(User user, List<Role> roles) {
-        user.setRoles(roles);
-        updateUser(user);
     }
 
     @Override

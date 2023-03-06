@@ -23,29 +23,28 @@ public class User implements UserDetails {
 
     private String email;
 
-    private String name;
+    private String firstname;
 
-    private String surname;
+    private String lastname;
 
     private int age;
 
     @ManyToMany
-//    @JoinTable(name = "users_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id"))
+//    @JoinTable(firstname = "users_roles",
+//            joinColumns = @JoinColumn(firstname = "user_id"),
+//            inverseJoinColumns = @JoinColumn(firstname = "role_id"))
     private List<Role> roles = new ArrayList<>();
 
     public User() {
     }
 
-    public User(String username, String password, String email, String name, String surname, int age, List<Role> roles) {
+    public User(String username, String password, String email, String firstname, String lastname, int age) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.name = name;
-        this.surname = surname;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.age = age;
-        this.roles = roles;
     }
 
     @Override
@@ -120,20 +119,20 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public int getAge() {
@@ -147,8 +146,8 @@ public class User implements UserDetails {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                "firstname='" + firstname + '\'' +
+                ", surname='" + lastname + '\'' +
                 ", age=" + age +
                 '}';
     }

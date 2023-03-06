@@ -45,9 +45,13 @@ public class SetupUsers {
         roleService.save(roleUser);
 
         User admin = new User("admin", "$2a$12$x2jGJqzzWh7mp1c4bNW/MePnpkb5Q.garsy0PN9cmK3Ja0UQ3N432",
-                "admin@mail.ru", "adminName", "adminSurname", 26, setAdminRole()); // пароль: admin
+                "admin@mail.ru", "adminName", "adminSurname", 26); // пароль: admin
         User user = new User("user", "$2a$12$AyaqSH0/6oYd6yBC2sKfgutia.m2Cz//roNJ0scMTDYmBEba8.87q",
-                "user@mail.ru", "userName", "userSurname", 25, setRoleUser()); // пароль: user
+                "user@mail.ru", "userName", "userSurname", 25); // пароль: user
+
+        //add roles
+        admin.addRole(roleAdmin);
+        user.addRole(roleUser);
 
         userService.save(admin);
         userService.save(user);
