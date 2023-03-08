@@ -16,7 +16,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true )
+    @Column(unique = true)
     private String username;
 
     private String password;
@@ -30,9 +30,6 @@ public class User implements UserDetails {
     private int age;
 
     @ManyToMany
-//    @JoinTable(firstname = "users_roles",
-//            joinColumns = @JoinColumn(firstname = "user_id"),
-//            inverseJoinColumns = @JoinColumn(firstname = "role_id"))
     private List<Role> roles = new ArrayList<>();
 
     public User() {
@@ -59,7 +56,6 @@ public class User implements UserDetails {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
-
 
 
     @Override
@@ -146,9 +142,9 @@ public class User implements UserDetails {
     @Override
     public String toString() {
         return "User{" +
-                "firstname='" + firstname + '\'' +
-                ", surname='" + lastname + '\'' +
-                ", age=" + age +
-                '}';
+            "firstname='" + firstname + '\'' +
+            ", surname='" + lastname + '\'' +
+            ", age=" + age +
+            '}';
     }
 }

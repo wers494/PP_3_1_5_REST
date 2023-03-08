@@ -55,7 +55,5 @@ public class SetupUsers {
 
         userService.save(admin);
         userService.save(user);
-
     }
-
 }

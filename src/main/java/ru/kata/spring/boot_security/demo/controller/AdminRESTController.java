@@ -23,10 +23,12 @@ public class AdminRESTController {
     public ResponseEntity<List<User>> showAllUser() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
+
     @GetMapping({"/{id}"})
     public ResponseEntity<User> getOneUser(@PathVariable Long id) {
         return new ResponseEntity<>(userService.getOneUser(id), HttpStatus.OK);
     }
+
     @PostMapping("/new")
     public ResponseEntity<User> createNewUser(@RequestBody User user) {
         userService.createNewUser(user);
@@ -43,6 +45,7 @@ public class AdminRESTController {
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
+
     @GetMapping("/info")
     public ResponseEntity<User> userInfo(Principal principal) {
         User user = userService.findByUsername(principal.getName());

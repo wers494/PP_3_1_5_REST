@@ -17,7 +17,6 @@ async function addUser() {
                     roles.push(roleList[i])
                 }
             }
-
             return roles
         }
 
@@ -38,11 +37,10 @@ async function addUser() {
                 roles: checkRole()
             })
         })
-
-            .then(() => {
-                newUserForm.reset()
-                getTableWithAllUsers();
+        .then(() => {
+            newUserForm.reset()
+            getTableWithAllUsers();
                 document.querySelector("#nav-home-tab").click()
-            })
+        })
     })
 }

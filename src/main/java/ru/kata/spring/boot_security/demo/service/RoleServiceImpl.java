@@ -21,7 +21,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional
-    public void save(Role role){
+    public void save(Role role) {
         roleRepo.save(role);
     }
 
@@ -49,7 +49,6 @@ public class RoleServiceImpl implements RoleService {
                 roleResult.add(roles.stream().filter(r -> r.getId() == i).findAny().orElse(null));
             }
         }
-
         return roleResult;
     }
 }

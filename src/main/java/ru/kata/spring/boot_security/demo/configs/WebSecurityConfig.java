@@ -16,6 +16,7 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessUserHandler successUserHandler;
     private UserService userService;
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -28,22 +29,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/info/**").permitAll()
-                .antMatchers("/api/**").permitAll()
-                .antMatchers("/user").hasAnyRole("ADMIN","USER")
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/", "/index").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin().successHandler(successUserHandler)
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll()
-                .and()
-                .csrf().disable();
+            .authorizeRequests()
+            .antMatchers("/info/**").permitAll()
+            .antMatchers("/api/**").permitAll()
+            .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+            .antMatchers("/admin").hasRole("ADMIN")
+            .antMatchers("/", "/index").permitAll()
+            .anyRequest().authenticated()
+            .and()
+            .formLogin().successHandler(successUserHandler)
+            .permitAll()
+            .and()
+            .logout()
+            .permitAll()
+            .and()
+            .csrf().disable();
     }
+
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();

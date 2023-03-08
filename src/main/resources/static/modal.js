@@ -1,4 +1,3 @@
-
 //editModal
 
 let editForm = document.forms['editForm']
@@ -52,7 +51,7 @@ async function editUser() {
         fetch('http://localhost:8080/api/edit/' + editForm.id.value, {
             method: 'PATCH',
             headers: {
-                'Content-Type' : 'application/json',
+                'Content-Type': 'application/json',
             },
 
             body: JSON.stringify({

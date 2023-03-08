@@ -16,22 +16,20 @@ async function getTableWithUserInfo() {
             $('#roleUserPage').append(roles)
 
             let filling = `$(
-                        <tr>
-                            <td>${info.id}</td>
-                            <td>${info.firstname}</td>
-                            <td>${info.lastname}</td>
-                            <td>${info.age}</td>
-                            <td>${info.email}</td>
-                            <td>${info.roles.map(r => r.role.substring(5))}</td>
-                        </tr>
-                    )`
-
+                <tr>
+                    <td>${info.id}</td>
+                    <td>${info.firstname}</td>
+                    <td>${info.lastname}</td>
+                    <td>${info.age}</td>
+                    <td>${info.email}</td>
+                    <td>${info.roles.map(r => r.role.substring(5))}</td>
+                </tr>
+            )`
             table.append(filling)
         })
 
         .catch(err => console.log(err))
 }
-
 
 async function headerFillingUser() {
     await fetch('http://localhost:8080/api/info')
